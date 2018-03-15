@@ -8,7 +8,11 @@ var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNa
 
 var getWindowNames = function (it) {
   try {
-    return gOPN(it);
+    if (toString.call(it) == '[object Window]') {
+      return windowNames.slice();
+    } else {
+      return gOPN(it);
+    }
   } catch (e) {
     return windowNames.slice();
   }
